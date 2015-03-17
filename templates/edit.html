@@ -1,0 +1,8 @@
+<h1>Edit {{ .Name }}</h1>
+
+<form action="/queries" method="POST">
+  <input type="text" name="Name" value="{{ .Name }}">
+  <textarea name="Query">{{printf "%s" .Query}}</textarea>
+  <input type="hidden" name="Active" value="1">
+  <input type="submit" value="Update Query">
+</form>
