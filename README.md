@@ -34,7 +34,7 @@ git clone git@github.com:foxycoder/goqu.git
 
 ```bash
 cd goqu
-goapp serve
+DATABASE_URL='postgres://user:pass@127.0.0.1/asq?sslmode=disable' goapp serve
 ```
 
 Open the app in your browser:

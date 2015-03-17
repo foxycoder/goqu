@@ -2,7 +2,7 @@ package goqu
 
 import(
   "fmt"
-//  "os"
+  "os"
   "net/http"
   "html/template"
   "github.com/gorilla/mux"
@@ -10,8 +10,7 @@ import(
   "database/sql"
 )
 
-// var database_url := os.Getenv("DATABASE_URL")
-var DatabaseUrl = "postgres://wouter:@127.0.0.1/asq?sslmode=disable"
+var database_url = os.Getenv("DATABASE_URL")
 var decoder = schema.NewDecoder()
 var templates = template.Must(template.ParseFiles("templates/edit.html", "templates/new.html"))
 
@@ -52,7 +51,7 @@ func QueriesCreateHandler(w http.ResponseWriter, r *http.Request) {
     // Handle error
   }
 
-  db, db_err := sql.Open("postgres", DatabaseUrl)
+  db, db_err := sql.Open("postgres", database_url)
   if db_err != nil {
     // Handle error
   }
@@ -74,7 +73,7 @@ func QueriesHandler(w http.ResponseWriter, r *http.Request) {
 
   w.Write([]byte(fmt.Sprintf("Query id is %s ", query_id)))
 
-  db, db_err := sql.Open("postgres", DatabaseUrl)
+  db, db_err := sql.Open("postgres", database_url)
   if db_err != nil {
     // Handle error
   }
